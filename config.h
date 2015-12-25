@@ -4,10 +4,11 @@
 #include "gaplessgrid.c"
 
 /* appearance */
+static const char dmenufont[]       = "monospace:size=11";
 static const char *fonts[] = {
 	"monospace:size=11"
 };
-static const char dmenufont[]       = "monospace:size=11";
+
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
@@ -64,15 +65,14 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[]  = { "rofi", "-font", "Roboto Mono 19", "-show", "run", NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *gruncmd[]  = { "/home/dln/bin/run", NULL };
 static const char *brightdeccmd[]  = { "xbacklight", "-dec", "4", NULL };
 static const char *brightinccmd[]  = { "xbacklight", "-inc", "4", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = gruncmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ 0,                            XF86XK_MonBrightnessUp, spawn, {.v = brightinccmd } },
 	{ 0,                            XF86XK_MonBrightnessDown, spawn, {.v = brightdeccmd } },
