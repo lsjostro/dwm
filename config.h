@@ -66,16 +66,24 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]  = { "rofi", "-font", "Roboto Mono 19", "-show", "run", NULL };
+static const char *lockcmd[]  = { "xautolock", "-locknow", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *brightdeccmd[]  = { "xbacklight", "-dec", "4", NULL };
 static const char *brightinccmd[]  = { "xbacklight", "-inc", "4", NULL };
+static const char *volinccmd[]  = { "amixer", "-q", "sset", "Master", "4%+", NULL };
+static const char *voldeccmd[]  = { "amixer", "-q", "sset", "Master", "4%-", NULL };
+static const char *togglemutecmd[]  = { "amixer", "-q", "sset", "Master", "toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ MODKEY,                       XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ 0,                            XF86XK_MonBrightnessUp, spawn, {.v = brightinccmd } },
 	{ 0,                            XF86XK_MonBrightnessDown, spawn, {.v = brightdeccmd } },
+	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v =volinccmd } },
+	{ 0,                            XF86XK_AudioLowerVolume, spawn, {.v =voldeccmd } },
+	{ 0,                            XF86XK_AudioMute, spawn, {.v = togglemutecmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
