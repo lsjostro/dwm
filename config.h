@@ -73,12 +73,14 @@ static const char *brightinccmd[]  = { "xbacklight", "-inc", "4", NULL };
 static const char *volinccmd[]  = { "amixer", "-q", "sset", "Master", "4%+", NULL };
 static const char *voldeccmd[]  = { "amixer", "-q", "sset", "Master", "4%-", NULL };
 static const char *togglemutecmd[]  = { "amixer", "-q", "sset", "Master", "toggle", NULL };
+static const char *screencap[]  = { "screencap", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_4,      spawn,          {.v = screencap } },
 	{ 0,                            XF86XK_MonBrightnessUp, spawn, {.v = brightinccmd } },
 	{ 0,                            XF86XK_MonBrightnessDown, spawn, {.v = brightdeccmd } },
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v =volinccmd } },
