@@ -65,7 +65,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]  = { "rofi", "-font", "Roboto Mono 32", "-show", "run", NULL };
+static const char *dmenucmd[]  = { "rofi", "-font", "Blex Sans 32", "-show", "run", NULL };
 static const char *lockcmd[]  = { "i3lock", "-c", "202020", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *brightdeccmd[]  = { "xbacklight", "-dec", "4", NULL };
